@@ -27,3 +27,8 @@ Route::get('about', [HomeController::class, 'about']);
 Route::get('login', [AuthController::class, 'login']);
 Route::get('forget', [AuthController::class, 'forget']);
 Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('admin/home', [DashboardController::class, 'admin_home']);
+Route::get('admin/about', [DashboardController::class, 'admin_about']);
+Route::get('admin/portfolio', [DashboardController::class, 'admin_portfolio']);
+Route::get('admin/contact', [DashboardController::class, 'admin_contact']);
+Route::get('admin/blog', [DashboardController::class, 'admin_blog']);
