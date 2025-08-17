@@ -17,6 +17,7 @@
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
+    @include('message')
   <div class="login-logo">
     <a href="../../index2.html"><b>Protfolio </b>Admin Panel</a>
   </div>
@@ -25,9 +26,11 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="../../index3.html" method="post">
+      <form action="{{ url('login_admin') }}" method="post">
+        @csrf
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email">
+          <span style="color:red;">{{ $errors->first('email') }}</span>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -35,7 +38,8 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password">
+            <span style="color:red;">{{ $errors->first('password') }}</span>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -59,7 +63,7 @@
         </div>
       </form>
 
-      <div class="social-auth-links text-center mb-3">
+      {{--  <div class="social-auth-links text-center mb-3">
         <p>- OR -</p>
         <a href="#" class="btn btn-block btn-primary">
           <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
@@ -67,15 +71,15 @@
         <a href="#" class="btn btn-block btn-danger">
           <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
         </a>
-      </div>
+      </div>  --}}
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
         <a href="{{ url('forget') }}">I forgot my password</a>
       </p>
-      <p class="mb-0">
+      {{--  <p class="mb-0">
         <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
+      </p>  --}}
     </div>
     <!-- /.login-card-body -->
   </div>

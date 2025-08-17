@@ -77,6 +77,15 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="{{ url('logout') }}" class="nav-link @if (Request::segment(2)=='blog') active @endif">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <p>
+                Logout
+              </p>
+            </a>
+          </li>
+
 
 
         </ul>
