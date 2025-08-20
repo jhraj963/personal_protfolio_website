@@ -28,6 +28,7 @@ Route::get('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::post('login_admin', [AuthController::class, 'login_admin']);
 Route::get('forget', [AuthController::class, 'forget']);
+Route::post('forget_admin', [AuthController::class, 'forget_admin']);
 
 Route::group(['middleware'=> 'admin'], function(){
 
