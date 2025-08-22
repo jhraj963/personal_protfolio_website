@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Home;
+use Str;
 
 class DashboardController extends Controller
 {
@@ -14,7 +16,39 @@ class DashboardController extends Controller
 
     public function admin_home(Request $request)
     {
-        return view('backend.home.list');
+        $data['getrecord']= Home::all();
+        return view('backend.home.list', $data);
+    }
+
+    public function admin_home_post(Request $request)
+    {
+        // dd($request->all());
+
+        if($request->add_to_update == "Add"){
+            $insertRecord = new Home;
+
+            $insertRecord = request()->validate([
+                'profile'=>'required'
+            ]);
+        }else{
+            $insertRecord = Home::find($request->id);
+        }
+        
+        $insertRecord->your_name = trim($request->your_name);
+        $insertRecord->work_experience = trim($request->work_experience);
+        $insertRecord->description = trim($request->description);
+        if(!empty($request->file('profile'))){
+            if(!empty($insertRecord->profile) && file_exists('profile/'. $insertRecord->profile)){
+                unlink('profile/'. $insertRecord->profile);
+            }
+            $file       =   $request->file('profile');
+            $randomStr  =   Str::random(30);
+            $filename   =   $randomStr.'.'.$file->getClientOriginalExtension();
+            $file->move('profile/', $filename);
+            $insertRecord->profile = $filename;
+        }
+        $insertRecord->save();
+        return redirect()->back()->with('success',"Home Page Successfully Save");
     }
 
     public function admin_about(Request $request)

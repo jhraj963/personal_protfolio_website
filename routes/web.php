@@ -34,6 +34,7 @@ Route::group(['middleware'=> 'admin'], function(){
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
     Route::get('admin/home', [DashboardController::class, 'admin_home']);
+    Route::post('admin/home/post', [DashboardController::class, 'admin_home_post']);
     Route::get('admin/about', [DashboardController::class, 'admin_about']);
     Route::get('admin/portfolio', [DashboardController::class, 'admin_portfolio']);
     Route::get('admin/contact', [DashboardController::class, 'admin_contact']);
