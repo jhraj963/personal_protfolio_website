@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Home;
+use App\Models\About;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $data['getrecord'] = Home::all();
+        $data['about'] = About::all();
         return view('index', $data);
     }
 
-    public function about()
-    {
-        return view('about');
-    }
+    // public function about()
+    // {
+    //     $data['getabout'] = About::all();
+    //     return view('index', $data);
+    // }
 }

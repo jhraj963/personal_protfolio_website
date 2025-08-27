@@ -115,8 +115,8 @@
 							<span class="flaticon-suitcase"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="750">0</strong>
-							<span>Project Complete</span>
+							<strong class="number" data-number="{{ @$about[0]->solutions }}">0</strong>
+							<span>Consulting solutions</span>
 						</div>
 					</div>
 				</div>
@@ -126,8 +126,8 @@
 							<span class="flaticon-loyalty"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="568">0</strong>
-							<span>Happy Clients</span>
+							<strong class="number" data-number="{{ @$about[0]->cases }}">0</strong>
+							<span>Completed Casses</span>
 						</div>
 					</div>
 				</div>
@@ -137,8 +137,8 @@
 							<span class="flaticon-coffee"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="478">0</strong>
-							<span>Cups of coffee</span>
+							<strong class="number" data-number="{{ @$about[0]->customers }}">0</strong>
+							<span>Satisfied Customers</span>
 						</div>
 					</div>
 				</div>
@@ -148,8 +148,8 @@
 							<span class="flaticon-calendar"></span>
 						</div>
 						<div class="text">
-							<strong class="number" data-number="780">0</strong>
-							<span>Years experienced</span>
+							<strong class="number" data-number="{{ @$about[0]->consultant }}">0</strong>
+							<span>Expert Consultant</span>
 						</div>
 					</div>
 				</div>
@@ -176,12 +176,10 @@
 								<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 
 								<ul class="about-info mt-4 px-md-0 px-2">
-									<li class="d-flex"><span>Name:</span> <span>Clyde Nowitzki</span></li>
-									<li class="d-flex"><span>Date of birth:</span> <span>January 01, 1990</span></li>
-									<li class="d-flex"><span>Address:</span> <span>San Francisco CA 97987 USA</span></li>
-									<li class="d-flex"><span>Zip code:</span> <span>1000</span></li>
-									<li class="d-flex"><span>Email:</span> <span>cydenowitzki@gmail.com</span></li>
-									<li class="d-flex"><span>Phone: </span> <span>+1-2234-5678-9-0</span></li>
+									<li class="d-flex"><span>Name:</span> <span>{{ @$about[0]->name }}</span></li>
+									<li class="d-flex"><span>Address:</span> <span>{{ @$about[0]->address }}</span></li>
+									<li class="d-flex"><span>Email:</span> <span>{{ @$about[0]->email }}</span></li>
+									<li class="d-flex"><span>Phone: </span> <span>{{ @$about[0]->number }}</span></li>
 								</ul>
 							</div>
 							<div class="col-md-12">

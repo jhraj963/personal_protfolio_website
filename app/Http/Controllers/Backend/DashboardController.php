@@ -54,13 +54,22 @@ class DashboardController extends Controller
 
     public function admin_about(Request $request)
     {
-        return view('backend.about.list');
+        $data['getrecord'] = About::all();
+        return view('backend.about.list', $data);
     }
 
     public function admin_about_post(Request $request)
     {
+        if ($request->add_to_update == "Add") {
+            $insertRecord = new About;
+
+            $insertRecord = request()->validate([
+                'name' => 'required'
+            ]);
+        } else {
+            $insertRecord = About::find($request->id);
+        }
         // dd($request->all());
-        $insertRecord= new About;
         $insertRecord->name = trim($request->name);
         $insertRecord->address = trim($request->address);
         $insertRecord->number = trim($request->number);
