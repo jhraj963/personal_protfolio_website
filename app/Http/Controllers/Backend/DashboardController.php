@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Home;
+use App\Models\About;
 use Str;
 
 class DashboardController extends Controller
@@ -54,6 +55,23 @@ class DashboardController extends Controller
     public function admin_about(Request $request)
     {
         return view('backend.about.list');
+    }
+
+    public function admin_about_post(Request $request)
+    {
+        // dd($request->all());
+        $insertRecord= new About;
+        $insertRecord->name = trim($request->name);
+        $insertRecord->address = trim($request->address);
+        $insertRecord->number = trim($request->number);
+        $insertRecord->email = trim($request->email);
+        $insertRecord->solutions = trim($request->solutions);
+        $insertRecord->cases = trim($request->cases);
+        $insertRecord->customers = trim($request->customers);
+        $insertRecord->consultant = trim($request->consultant);
+
+        $insertRecord->save();
+        return redirect()->back()->with('success', "About Page Successfully Save");
     }
 
     public function admin_portfolio(Request $request)
