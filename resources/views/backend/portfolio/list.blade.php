@@ -24,8 +24,44 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-
-
+    @include('message')
+    <section class="col-lg-12">
+        <a href="{{ url('admin/portfolio/add') }}" class="btn btn-warning">Add Portfolio</a>
+        <div class="card">
+            <div class="card-header">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($getrecord as $value)
+                        <tr>
+                            <td>{{ $value->id }}</td>
+                            <td>{{ $value->title }}</td>
+                            <td>
+                                @if(!empty($value->image))
+                                    @if(file_exists(public_path('portfolio/'.$value->image)))
+                                       <img src="{{ url('portfolio/'.$value->image) }}" width="70" height="70">
+                                    @endif
+                                @endif
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-primary">Edit</a>
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
 
     <!-- /.content -->
   </div>

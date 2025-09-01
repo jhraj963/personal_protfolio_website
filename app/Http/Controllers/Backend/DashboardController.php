@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Home;
 use App\Models\About;
+use App\Models\Protfolio;
 use Str;
 
 class DashboardController extends Controller
@@ -85,7 +86,8 @@ class DashboardController extends Controller
 
     public function admin_portfolio(Request $request)
     {
-        return view('backend.portfolio.list');
+        $data['getrecord'] = Protfolio::all();
+        return view('backend.portfolio.list',$data);
     }
 
     public function admin_contact(Request $request)

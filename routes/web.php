@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\AuthController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,10 @@ Route::group(['middleware'=> 'admin'], function(){
     Route::post('admin/about/post', [DashboardController::class, 'admin_about_post']);
 
     Route::get('admin/portfolio', [DashboardController::class, 'admin_portfolio']);
+
+    Route::get('admin/portfolio/add', [PortfolioController::class, 'portfolio_add']);
+    Route::post('admin/portfolio/add', [PortfolioController::class, 'portfolio_post']);
+
     Route::get('admin/contact', [DashboardController::class, 'admin_contact']);
     Route::get('admin/blog', [DashboardController::class, 'admin_blog']);
 
