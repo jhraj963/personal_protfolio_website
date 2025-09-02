@@ -32,4 +32,50 @@ class PortfolioController extends Controller
         $insertRecord->save();
         return redirect('admin/portfolio')->with('success', "Portfolio Page Successfully Add");
     }
+
+    //Edit
+
+    public function portfolio_edit($id, Request $request)
+    {
+        $data['getrecord'] = Protfolio::find($id);
+        return view('backend.portfolio.edit', $data);
+    }
+
+    // Update
+
+    public function portfolio_update($id, Request $request)
+    {
+        $updateRecord = Protfolio::find($id);
+
+        $updateRecord->title = trim($request->title);
+        if(!empty($request->file('image')))
+        {
+            if(!empty($updateRecord->image) && file_exists('portfolio/'. $updateRecord->image))
+            {
+                unlink('portfolio/' . $updateRecord->image);
+            }
+            $file       =   $request->file('image');
+            $randomStr  =   Str::random(30);
+            $filename   =   $randomStr . '.' . $file->getClientOriginalExtension();
+            $file->move('portfolio/', $filename);
+            $updateRecord->image = $filename;
+        }
+        $updateRecord->save();
+        return redirect('admin/portfolio')->with('success', "Portfolio Successfully Updated");
+    }
+
+    // Delete
+
+    public function portfolio_delete($id, Request $request)
+    {
+        $deleteRecord = Protfolio::find($id);
+
+        if (!empty($deleteRecord->image) && file_exists('portfolio/' . $deleteRecord->image)) {
+            unlink('portfolio/' . $deleteRecord->image);
+        }
+
+        $deleteRecord->delete();
+
+        return redirect('admin/portfolio')->with('error', "Portfolio Successfully Deleted!");
+    }
 }
