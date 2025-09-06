@@ -427,82 +427,19 @@
 			</div>
 
 			<div class="row">
-				<div class="col-md-6 col-lg-3">
+                @foreach ($protfolio as $row)
+                <div class="col-md-6 col-lg-3">
 					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
 						<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-3d-design"></span></div>
 						<div class="media-body">
-							<h3 class="heading mb-3">Web Design</h3>
+							<h3 class="heading mb-3">{{ $row->title }}</h3>
 							<p>A small river named Duden flows by their place and supplies.</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6 col-lg-3">
-					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
-						<div class="icon shadow d-flex align-items-center justify-content-center"><span class="flaticon-app-development"></span></div>
-						<div class="media-body">
-							<h3 class="heading mb-3">Web Application</h3>
-							<p>A small river named Duden flows by their place and supplies.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3">
-					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
-						<div class="icon shadow d-flex align-items-center justify-content-center"><span class="flaticon-web-programming"></span></div>
-						<div class="media-body">
-							<h3 class="heading mb-3">Web Development</h3>
-							<p>A small river named Duden flows by their place and supplies.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3">
-					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
-						<div class="icon shadow d-flex align-items-center justify-content-center"><span class="flaticon-branding"></span></div>
-						<div class="media-body">
-							<h3 class="heading mb-3">Banner Design</h3>
-							<p>A small river named Duden flows by their place and supplies.</p>
-						</div>
-					</div>
-				</div>
+                @endforeach
 			</div>
 
-			<div class="row">
-				<div class="col-md-6 col-lg-3">
-					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
-						<div class="icon shadow d-flex align-items-center justify-content-center"><span class="flaticon-computer"></span></div>
-						<div class="media-body">
-							<h3 class="heading mb-3">Branding</h3>
-							<p>A small river named Duden flows by their place and supplies.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3">
-					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
-						<div class="icon shadow d-flex align-items-center justify-content-center"><span class="flaticon-vector"></span></div>
-						<div class="media-body">
-							<h3 class="heading mb-3">Icon Design</h3>
-							<p>A small river named Duden flows by their place and supplies.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3">
-					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
-						<div class="icon shadow d-flex align-items-center justify-content-center"><span class="flaticon-vector"></span></div>
-						<div class="media-body">
-							<h3 class="heading mb-3">Graphic Design</h3>
-							<p>A small river named Duden flows by their place and supplies.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-lg-3">
-					<div class="media block-6 services d-block bg-white rounded-lg shadow ftco-animate">
-						<div class="icon shadow d-flex align-items-center justify-content-center"><span class="flaticon-zoom"></span></div>
-						<div class="media-body">
-							<h3 class="heading mb-3">SEO</h3>
-							<p>A small river named Duden flows by their place and supplies.</p>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</section>
 
@@ -533,78 +470,21 @@
 				</div>
 			</div>
 			<div class="row">
+                @foreach ($protfolio as $row)
 				<div class="col-md-3">
-					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(frontend/images/work-1.jpg);">
+                    @if(!empty($row->image))
+                        @if(file_exists(public_path('portfolio/'.$row->image)))
+					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url('{{ asset('portfolio/'.$row->image) }}');">
+                        @endif
+                    @endif
 						<div class="overlay"></div>
 						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
+							<h3><a href="#">{{ $row->title }}</a></h3>
+							{{--  <span>Web Design</span>  --}}
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(frontend/images/work-2.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(frontend/images/work-3.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(frontend/images/work-4.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(frontend/images/work-5.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(frontend/images/work-6.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(frontend/images/work-7.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="project img shadow ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(frontend/images/work-8.jpg);">
-						<div class="overlay"></div>
-						<div class="text text-center p-4">
-							<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-							<span>Web Design</span>
-						</div>
-					</div>
-				</div>
+                @endforeach
 			</div>
 		</div>
 	</section>
