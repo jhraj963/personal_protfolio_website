@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\PortfolioController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('about', [HomeController::class, 'about']);
+Route::post('contact/post', [HomeController::class, 'contact_post']);
 
 // Admin Panel
 Route::get('login', [AuthController::class, 'login']);
