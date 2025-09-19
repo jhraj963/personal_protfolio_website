@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Home;
 use App\Models\About;
 use App\Models\Protfolio;
+use App\Models\Contact;
 use Str;
 
 class DashboardController extends Controller
@@ -35,7 +36,7 @@ class DashboardController extends Controller
         }else{
             $insertRecord = Home::find($request->id);
         }
-        
+
         $insertRecord->your_name = trim($request->your_name);
         $insertRecord->work_experience = trim($request->work_experience);
         $insertRecord->description = trim($request->description);
@@ -92,7 +93,15 @@ class DashboardController extends Controller
 
     public function admin_contact(Request $request)
     {
-        return view('backend.contact.list');
+        $data['getrecord'] = Contact::all();
+        return view('backend.contact.list', $data);
+    }
+
+    public function contact_delete($id, Request $request)
+    {
+        $contactDelete = Contact::find($id);
+        $contactDelete->delete();
+        return redirect()->back()->with('error', "Contact Successfully Deleted!");
     }
 
     public function admin_blog(Request $request)

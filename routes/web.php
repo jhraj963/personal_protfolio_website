@@ -51,6 +51,9 @@ Route::group(['middleware'=> 'admin'], function(){
     Route::get('admin/portfolio/delete/{id}', [PortfolioController::class, 'portfolio_delete']);
 
     Route::get('admin/contact', [DashboardController::class, 'admin_contact']);
+    Route::get('admin/contact/delete/{id}', [DashboardController::class, 'contact_delete']);
+
+
     Route::get('admin/blog', [DashboardController::class, 'admin_blog']);
 
 });
