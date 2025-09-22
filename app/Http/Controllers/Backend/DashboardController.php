@@ -8,6 +8,7 @@ use App\Models\Home;
 use App\Models\About;
 use App\Models\Protfolio;
 use App\Models\Contact;
+use App\Models\Blog;
 use Str;
 
 class DashboardController extends Controller
@@ -106,6 +107,7 @@ class DashboardController extends Controller
 
     public function admin_blog(Request $request)
     {
-        return view('backend.blog.list');
+        $data['getrecord'] = Blog::all();
+        return view('backend.blog.list', $data);
     }
 }

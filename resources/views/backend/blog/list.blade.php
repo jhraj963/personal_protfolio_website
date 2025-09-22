@@ -25,7 +25,45 @@
 
     <!-- Main content -->
 
-
+    @include('message')
+    <section class="col-lg-12">
+        <a href="{{ url('admin/blog/add') }}" class="btn btn-warning">Add Blog</a>
+        <div class="card">
+            <div class="card-header">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($getrecord as $value)
+                        <tr>
+                            <td>{{ $value->id }}</td>
+                            <td>
+                                @if(!empty($value->image))
+                                    @if(file_exists(public_path('blog/'.$value->image)))
+                                       <img src="{{ url('blog/'.$value->image) }}" width="70" height="70">
+                                    @endif
+                                @endif
+                            </td>
+                            <td>{{ $value->title }}</td>
+                            <td>{{ $value->description }}</td>
+                            <td>
+                                <a href="" class="btn btn-primary">Edit</a>
+                                <a onclick="return confirm('Ar you sure want to delete?')" href="" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
     <!-- /.content -->
   </div>
