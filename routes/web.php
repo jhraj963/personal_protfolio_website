@@ -59,6 +59,9 @@ Route::group(['middleware'=> 'admin'], function(){
 
     Route::get('admin/blog/add', [BlogController::class, 'add_blog']);
     Route::post('admin/blog/add', [BlogController::class, 'admin_add_blog']);
+    Route::get('admin/blog/edit/{id}', [BlogController::class, 'admin_blog_edit']);
+    Route::post('admin/blog/update/{id}', [BlogController::class, 'admin_blog_update']);
+    Route::get('admin/blog/delete/{id}', [BlogController::class, 'admin_blog_delete']);
 
 });
 
