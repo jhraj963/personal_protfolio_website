@@ -7,6 +7,7 @@ use App\Models\Home;
 use App\Models\About;
 use App\Models\Protfolio;
 use App\Models\Contact;
+use App\Models\Blog;
 use Mail;
 use App\Mail\ContactMail;
 
@@ -17,7 +18,15 @@ class HomeController extends Controller
         $data['getrecord'] = Home::all();
         $data['about'] = About::all();
         $data['protfolio'] = Protfolio::all();
+        $data['blog'] = Blog::all();
         return view('index', $data);
+    }
+
+    public function single_blog($id, Request $request)
+    {
+
+        $data['blog'] = Blog::find($id);
+        return view('single_blog', $data);
     }
 
     // public function about()

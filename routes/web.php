@@ -25,6 +25,7 @@ use App\Http\Controllers\Backend\BlogController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('about', [HomeController::class, 'about']);
 Route::post('contact/post', [HomeController::class, 'contact_post']);
+Route::get('single-blog/{id}', [HomeController::class, 'single_blog']);
 
 // Admin Panel
 Route::get('login', [AuthController::class, 'login']);
